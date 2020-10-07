@@ -5,7 +5,7 @@
 using namespace std;
 
 string generateRandomKey();
-void isValid(string);
+bool isValid(string);
 
 int main() {
 
@@ -82,7 +82,7 @@ std::string generateRandomKey()
 	return randomKey;
 }
 
-void isValid(string input) {
+bool isValid(string input) {
 
 	// checking for max length
 	if (input.length() > 26) {
@@ -106,6 +106,6 @@ void isValid(string input) {
 		}
 
 	}
-	
+	return false;
 }
 
