@@ -90,7 +90,7 @@ void isValid(string input) {
 	}
 	else {
 
-		for (int i{ 0 }; i < input.size(); i++) {
+		for (int i{ 0 }; i < input.length()-1; i++) {
 
 			// checking for non-alphabetic characters 
 			if (!isalpha(input.at(i))) {
