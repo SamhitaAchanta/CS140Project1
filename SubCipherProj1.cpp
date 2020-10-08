@@ -13,7 +13,7 @@ int main() {
 	int spacing;
 	string key;
 	string plaintext;
-	
+
 	cout << "Testing Monoalphabetic Substitution Cipher (MASC) program:" << endl;
 	cout << endl;
 	cout << "Please make a selection:" << endl;
@@ -28,10 +28,15 @@ int main() {
 	cout << endl;
 
 	if (choice == 1) {
-		
+
 		cout << "Enter a key to be used for encryption and decryption. Include each letter of alphabet, none repeated:" << endl;
 		getline(cin, key);
-		isValid(key);
+
+		if (!isValid(key)) {
+			cout << "Enter a key to be used for encryption and decryption. Include each letter of alphabet, none repeated:" << endl;
+			getline(cin, key);
+		}
+
 		transform(key.begin(), key.end(), key.begin(), ::toupper);
 		cout << "Key is now: " << key << endl;
 		cout << endl;
@@ -48,6 +53,7 @@ int main() {
 		// call  encryption() function here
 		// call spacing() function here
 		cout << "Ciphertext is: ";
+
 	}
 	else if (choice == 2) {
 
@@ -85,12 +91,12 @@ std::string generateRandomKey()
 bool isValid(string input) {
 
 	// checking for max length
-	if (input.length() > 26) {
+	if (input.length() > 26 || input.length() < 26) {
 		cout << "Incorrect key length. Must be 26 characters." << endl;
 	}
 	else {
 
-		for (int i{ 0 }; i < input.length()-1; i++) {
+		for (int i{ 0 }; i < input.length() - 1; i++) {
 
 			// checking for non-alphabetic characters 
 			if (!isalpha(input.at(i))) {
@@ -106,6 +112,7 @@ bool isValid(string input) {
 		}
 
 	}
-	return false;
+	return true;
+
 }
 
